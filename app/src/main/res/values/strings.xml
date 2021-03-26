@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">GuichetATM</string>
+    <string name="nom_utilisateur">Nom d\'utilisateur</string>
+    <string name="nip">NIP</string>
+    <string name="authentification">Authentification</string>
+    <string name="bonjour">Bonjour Android ATM</string>
+    <string name="deconnection">Deconnection</string>
+    <string name="zero">0</string>
+    <string name="un">1</string>
+    <string name="deux">2</string>
+    <string name="trois">3</string>
+    <string name="quatre">4</string>
+    <string name="cinq">5</string>
+    <string name="six">6</string>
+    <string name="sept">7</string>
+    <string name="huit">8</string>
+    <string name="neuf">9</string>
+    <string name="point">.</string>
+    <string name="effacer">EFF</string>
+    <string name="depot">Dépôt</string>
+    <string name="retrait">Retrait</string>
+    <string name="virement">Virement</string>
+    <string name="cheque">Chèque</string>
+    <string name="epargne">Épargne</string>
+    <string name="etat_des_comptes">État des comptes</string>
+    <string name="soumettre">Soumettre</string>
 </resources>
