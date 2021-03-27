@@ -14,12 +14,15 @@
         android:id="@+id/editxtNomUtilisateur"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="text"
+        android:autofillHints="@string/nom_utilisateur"
         android:hint="@string/nom_utilisateur" />
 
     <EditText
         android:id="@+id/editTxtNip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:autofillHints="@string/nip"
         android:hint="@string/nip"
         android:inputType="numberPassword" />
 
@@ -34,6 +37,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:onClick="onClickAuthentifier"
+            style="@android:style/Widget.DeviceDefault.Button"
             android:text="@string/authentification" />
 
 

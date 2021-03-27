@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="30dp"
+    android:paddingTop="60dp"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     tools:context=".Guichet">
@@ -18,9 +18,10 @@
 
         <TextView
             android:id="@+id/txtBonjour"
+            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="30"
+            android:layout_weight="4"
             android:text="@string/bonjour">
 
         </TextView>
@@ -30,6 +31,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/white"
+            style="@android:style/Widget.DeviceDefault.Button"
+            android:onClick="onClickDeconnection"
             android:text="@string/deconnection">
 
         </Button>
@@ -47,6 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="onClickZero"
             android:text="@string/zero">
 
         </Button>
@@ -183,6 +189,7 @@
         android:id="@+id/edtTxtMontantEntre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:editable="false"
         android:clickable="false">
 
     </EditText>
@@ -195,7 +202,8 @@
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="30dp"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
             android:layout_weight="1">
 
             <RadioButton
@@ -228,7 +236,8 @@
         <RadioGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="60dp"
+            android:paddingStart="60dp"
+            android:paddingEnd="10dp"
             android:layout_weight="1">
 
             <RadioButton
@@ -257,10 +266,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnEtatComptes"
+            android:onClick="onClickEtatCompte"
             style="@android:style/Widget.DeviceDefault.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -283,6 +294,19 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/txtSoldeCheque"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Placeholder"/>
+
+    <TextView
+        android:id="@+id/txtSoldeEpargne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Placeholder"/>
 
 
 </LinearLayout>

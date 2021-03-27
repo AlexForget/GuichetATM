@@ -24,4 +24,8 @@
     <string name="epargne">Épargne</string>
     <string name="etat_des_comptes">État des comptes</string>
     <string name="soumettre">Soumettre</string>
+    <string name="paiement_interets">Paiement des intérêts</string>
+    <string name="liste_cheque">Comptes chèques</string>
+    <string name="liste_epargne">Comptes épargne</string>
+    <string name="liste_client">Liste des clients</string>
 </resources>
