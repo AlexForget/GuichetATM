@@ -32,6 +32,7 @@
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:onClick="onClickListeCheque"
             android:text="@string/liste_cheque">
 
         </Button>
@@ -47,6 +48,7 @@
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:onClick="onClickListeEpargne"
             android:text="@string/liste_epargne">
 
         </Button>
@@ -59,10 +61,10 @@
 
         <Button
             android:id="@+id/btnListeClients"
-            android:onClick="onClickTemporaire"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:onClick="onClickListeClient"
             android:text="@string/liste_client">
 
         </Button>

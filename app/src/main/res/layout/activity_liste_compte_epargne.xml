@@ -6,17 +6,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:baselineAligned="false"
-    tools:context=".ListeCompteCheque">
+    tools:context=".ListeCompteEpargne">
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="@string/liste_cheque_admin"
+        android:text="@string/liste_eparne_admin"
         android:textAlignment="center">
 
-
     </TextView>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -213,8 +214,3 @@
     </LinearLayout>
 
 </LinearLayout>
-
-
-
-
-

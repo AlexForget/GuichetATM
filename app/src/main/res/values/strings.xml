@@ -29,4 +29,6 @@
     <string name="liste_epargne">Comptes épargne</string>
     <string name="liste_client">Liste des clients</string>
     <string name="liste_cheque_admin">Liste des comptes chèques</string>
+    <string name="liste_eparne_admin">Liste des comptes épargne</string>
+    <string name="liste_client_admin">Liste des clients</string>
 </resources>

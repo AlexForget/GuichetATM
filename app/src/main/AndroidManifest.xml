@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GuichetATM">
-        <activity android:name=".ListeCompteCheque"></activity>
+        <activity android:name=".ListeClient"></activity>
+        <activity android:name=".ListeCompteEpargne" />
+        <activity android:name=".ListeCompteCheque" />
         <activity android:name=".EcranAdministrateur" />
         <activity android:name=".Guichet" />
         <activity android:name=".MainActivity">
