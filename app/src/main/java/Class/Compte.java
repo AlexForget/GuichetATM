@@ -44,8 +44,10 @@ public abstract class Compte implements Comparable {
      */
     public String retrait(double montant) {
         String chaine;
+        String soldeAffichage = new DecimalFormat("#.##").format(solde);
+
         if (solde - montant < 0) {
-            chaine = "Fond insufisant. Solde actuel " + solde;
+            chaine = "Fond insufisant. Solde actuel " + soldeAffichage;
             return chaine;
         }
         if (montant % 10 != 0) {

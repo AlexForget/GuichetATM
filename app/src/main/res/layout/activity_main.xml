@@ -38,7 +38,6 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:onClick="onClickAuthentifier"
-            style="@android:style/Widget.DeviceDefault.Button"
             android:text="@string/authentification" />
 
 

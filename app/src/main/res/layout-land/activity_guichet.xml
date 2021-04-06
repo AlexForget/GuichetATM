@@ -7,12 +7,13 @@
     android:paddingTop="20dp"
     android:paddingStart="5dp"
     android:paddingEnd="5dp"
+    android:weightSum="2"
     android:orientation="horizontal"
     android:baselineAligned="false"
     tools:context=".Guichet">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical">
@@ -36,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                style="@android:style/Widget.DeviceDefault.Button"
+                android:layout_margin="5dp"
                 android:text="@string/deconnection">
 
             </Button>
@@ -51,7 +52,7 @@
 
             <Button
                 android:id="@+id/btnZero"
-                style="@android:style/Widget.DeviceDefault.Button"
+                android:layout_margin="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -61,7 +62,7 @@
 
             <Button
                 android:id="@+id/btnUn"
-                style="@android:style/Widget.DeviceDefault.Button"
+                android:layout_margin="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -71,7 +72,7 @@
 
             <Button
                 android:id="@+id/btnDeux"
-                style="@android:style/Widget.DeviceDefault.Button"
+                android:layout_margin="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -81,7 +82,7 @@
 
             <Button
                 android:id="@+id/btnTrois"
-                style="@android:style/Widget.DeviceDefault.Button"
+                android:layout_margin="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -98,7 +99,7 @@
 
             <Button
                 android:id="@+id/btnQuatre"
-                style="@android:style/Widget.DeviceDefault.Button"
+                android:layout_margin="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -108,7 +109,7 @@
 
             <Button
                 android:id="@+id/btnCinq"
-                style="@android:style/Widget.DeviceDefault.Button"
+                android:layout_margin="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -118,7 +119,7 @@
 
             <Button
                 android:id="@+id/btnSix"
-                style="@android:style/Widget.DeviceDefault.Button"
+                android:layout_margin="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -128,7 +129,7 @@
 
             <Button
                 android:id="@+id/btnSept"
-                style="@android:style/Widget.DeviceDefault.Button"
+                android:layout_margin="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -146,7 +147,7 @@
 
             <Button
                 android:id="@+id/btnHuit"
-                style="@android:style/Widget.DeviceDefault.Button"
+                android:layout_margin="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -156,7 +157,7 @@
 
             <Button
                 android:id="@+id/btnNeuf"
-                style="@android:style/Widget.DeviceDefault.Button"
+                android:layout_margin="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -166,7 +167,7 @@
 
             <Button
                 android:id="@+id/btnPoint"
-                style="@android:style/Widget.DeviceDefault.Button"
+                android:layout_margin="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -176,7 +177,7 @@
 
             <Button
                 android:id="@+id/btnEffacer"
-                style="@android:style/Widget.DeviceDefault.Button"
+                android:layout_margin="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -201,7 +202,7 @@
 
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical">
@@ -215,7 +216,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:paddingLeft="30dp">
+                android:paddingStart="30dp">
 
                 <RadioButton
                     android:id="@+id/rdbDepot"
@@ -281,9 +282,9 @@
 
             <Button
                 android:id="@+id/btnEtatComptes"
-                style="@android:style/Widget.DeviceDefault.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/etat_des_comptes">
 
@@ -291,9 +292,9 @@
 
             <Button
                 android:id="@+id/btnSoumettre"
-                style="@android:style/Widget.DeviceDefault.Button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/soumettre">
 

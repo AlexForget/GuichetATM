@@ -16,8 +16,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickAuthentifier(View view) {
-        //Intent guichet = new Intent(this, Guichet.class);
-        Intent test = new Intent(this, Test.class);
-        startActivity(test);
+        Intent guichet = new Intent(this, Guichet.class);
+        startActivity(guichet);
+        //Intent test = new Intent(this, Test.class);
+        //startActivity(test);
     }
 }

@@ -8,7 +8,9 @@ import android.widget.TextView;
 import Class.*;
 
 public class Test extends AppCompatActivity {
-    Epargne e1 = new Epargne(111, "abc", 1);
+    Client c1 = new Client("aa", "aa", "MouF", 1234);
+    Client c2 = new Client("aa", "bb", "MouF", 1234);
+    Client c3 = new Client(c1);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +21,14 @@ public class Test extends AppCompatActivity {
 
     public void onClcikTest(View view) {
         TextView affichage = findViewById(R.id.affichageCompte);
+        String test = "";
 
 
-        affichage.setText(e1.toString());
+
+
+        affichage.setText(Integer.toString(c2.compareTo(c1)));
+
+
 
 
     }
@@ -29,18 +36,18 @@ public class Test extends AppCompatActivity {
     public void onClickRetrait(View view) {
         TextView transaction = findViewById(R.id.transaction);
 
-        transaction.setText(e1.retrait(1000));
+
     }
 
     public void onClickDepot(View view) {
         TextView transaction = findViewById(R.id.transaction);
 
-        transaction.setText(e1.depot(2000));
+
     }
 
     public void onClickInteret(View view) {
         TextView transaction = findViewById(R.id.transaction);
 
-        transaction.setText(e1.payerInteret());
+
     }
 }
