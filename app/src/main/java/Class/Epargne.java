@@ -52,4 +52,8 @@ public class Epargne extends Compte {
 
         return chaine;
     }
+
+    public double getTauxInteret() {
+        return TAUX_INTERET;
+    }
 }

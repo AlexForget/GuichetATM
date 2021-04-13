@@ -5,12 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import Class.*;
+import Class.Guichet;
+import Class.Client;
+import Class.Cheque;
+import Class.Epargne;
+import Class.Compte;
 
 public class Test extends AppCompatActivity {
-    Client c1 = new Client("aa", "aa", "MouF", 1234);
-    Client c2 = new Client("aa", "bb", "MouF", 1234);
-    Client c3 = new Client(c1);
+    Client c1 = new Client("Max", "Bob", "MouF", 1234);
+    Compte ch1 = new Cheque(1111, "5h5h", 500);
+    Compte ep1 = new Epargne(2222, "1b1b", 10000);
+    Guichet g1 = new Guichet(c1, (Cheque)ch1, (Epargne)ep1);
+
+    Guichet g2 = new Guichet(g1);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,18 +31,24 @@ public class Test extends AppCompatActivity {
         TextView affichage = findViewById(R.id.affichageCompte);
         String test = "";
 
+        test = g1.toString();
 
+        affichage.setText(test);
 
-
-        affichage.setText(Integer.toString(c2.compareTo(c1)));
-
-
-
+        c1.setNom("aaa");
+        c1.setPrenom("aaa");
+        ch1.setNip(555555);
+        ep1.setNip(666666);
 
     }
 
     public void onClickRetrait(View view) {
-        TextView transaction = findViewById(R.id.transaction);
+        TextView affichage = findViewById(R.id.affichageCompte);
+        String test = "";
+
+        test = g2.toString();
+
+        affichage.setText(test);
 
 
     }

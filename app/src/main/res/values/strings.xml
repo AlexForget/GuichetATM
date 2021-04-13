@@ -31,4 +31,6 @@
     <string name="liste_cheque_admin">Liste des comptes chèques</string>
     <string name="liste_eparne_admin">Liste des comptes épargne</string>
     <string name="liste_client_admin">Liste des clients</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

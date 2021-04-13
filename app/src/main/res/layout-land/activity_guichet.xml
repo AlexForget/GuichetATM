@@ -38,6 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="5dp"
+                android:onClick="onClickDeconnection"
                 android:text="@string/deconnection">
 
             </Button>
@@ -56,6 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="onClickZero"
                 android:text="@string/zero">
 
             </Button>
@@ -66,6 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="onClickUn"
                 android:text="@string/un">
 
             </Button>
@@ -76,6 +79,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="onClickDeux"
                 android:text="@string/deux">
 
             </Button>
@@ -86,6 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="onClickTrois"
                 android:text="@string/trois">
 
             </Button>
@@ -103,6 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="onClickQuatre"
                 android:text="@string/quatre">
 
             </Button>
@@ -113,6 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="onClickCinq"
                 android:text="@string/cinq">
 
             </Button>
@@ -123,6 +130,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="onClickSix"
                 android:text="@string/six">
 
             </Button>
@@ -133,6 +141,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="onClickSept"
                 android:text="@string/sept">
 
             </Button>
@@ -151,6 +160,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="onClickHuit"
                 android:text="@string/huit">
 
             </Button>
@@ -161,6 +171,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="onClickNeuf"
                 android:text="@string/neuf">
 
             </Button>
@@ -171,6 +182,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="onClickPoint"
                 android:text="@string/point">
 
             </Button>
@@ -181,6 +193,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="onClcikEffacer"
                 android:text="@string/effacer">
 
             </Button>
@@ -193,6 +206,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:editable="false"
+            android:text="@string/zero"
             android:clickable="false">
 
         </EditText>
