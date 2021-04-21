@@ -1,6 +1,8 @@
 package Class;
 
-public class Cheque extends Compte {
+import java.io.Serializable;
+
+public class Cheque extends Compte implements Serializable {
 
     /**
      * Constructeur à trois arguments

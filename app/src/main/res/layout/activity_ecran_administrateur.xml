@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/fond"
     tools:context=".EcranAdministrateur">
 
     <RelativeLayout
@@ -17,6 +18,7 @@
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/niv3"
             android:text="@string/paiement_interets">
 
         </Button>
@@ -33,6 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:onClick="onClickListeCheque"
+            android:backgroundTint="@color/niv3"
             android:text="@string/liste_cheque">
 
         </Button>
@@ -49,6 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:onClick="onClickListeEpargne"
+            android:backgroundTint="@color/niv3"
             android:text="@string/liste_epargne">
 
         </Button>
@@ -65,6 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:onClick="onClickListeClient"
+            android:backgroundTint="@color/niv3"
             android:text="@string/liste_client">
 
         </Button>

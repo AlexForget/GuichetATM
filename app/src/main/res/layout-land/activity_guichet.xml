@@ -10,6 +10,7 @@
     android:weightSum="2"
     android:orientation="horizontal"
     android:baselineAligned="false"
+    android:background="@color/fond"
     tools:context=".Guichet">
 
     <LinearLayout
@@ -28,6 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
+                android:textColor="@color/niv1"
                 android:text="@string/bonjour">
 
             </TextView>
@@ -37,6 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="@color/niv3"
                 android:layout_margin="5dp"
                 android:onClick="onClickDeconnection"
                 android:text="@string/deconnection">
@@ -54,6 +57,7 @@
             <Button
                 android:id="@+id/btnZero"
                 android:layout_margin="5dp"
+                android:backgroundTint="@color/niv3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -65,6 +69,7 @@
             <Button
                 android:id="@+id/btnUn"
                 android:layout_margin="5dp"
+                android:backgroundTint="@color/niv3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -76,6 +81,7 @@
             <Button
                 android:id="@+id/btnDeux"
                 android:layout_margin="5dp"
+                android:backgroundTint="@color/niv3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -87,6 +93,7 @@
             <Button
                 android:id="@+id/btnTrois"
                 android:layout_margin="5dp"
+                android:backgroundTint="@color/niv3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -105,6 +112,7 @@
             <Button
                 android:id="@+id/btnQuatre"
                 android:layout_margin="5dp"
+                android:backgroundTint="@color/niv3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -116,6 +124,7 @@
             <Button
                 android:id="@+id/btnCinq"
                 android:layout_margin="5dp"
+                android:backgroundTint="@color/niv3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -127,6 +136,7 @@
             <Button
                 android:id="@+id/btnSix"
                 android:layout_margin="5dp"
+                android:backgroundTint="@color/niv3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -138,6 +148,7 @@
             <Button
                 android:id="@+id/btnSept"
                 android:layout_margin="5dp"
+                android:backgroundTint="@color/niv3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -157,6 +168,7 @@
             <Button
                 android:id="@+id/btnHuit"
                 android:layout_margin="5dp"
+                android:backgroundTint="@color/niv3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -168,6 +180,7 @@
             <Button
                 android:id="@+id/btnNeuf"
                 android:layout_margin="5dp"
+                android:backgroundTint="@color/niv3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -182,6 +195,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="@color/niv3"
                 android:onClick="onClickPoint"
                 android:text="@string/point">
 
@@ -193,6 +207,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="@color/niv3"
                 android:onClick="onClcikEffacer"
                 android:text="@string/effacer">
 
@@ -207,6 +222,7 @@
             android:layout_height="wrap_content"
             android:editable="false"
             android:text="@string/zero"
+            android:textColor="@color/niv1"
             android:clickable="false">
 
         </EditText>
@@ -237,6 +253,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
+                    android:buttonTint="@color/niv1"
+                    android:textColor="@color/niv1"
                     android:text="@string/depot">
 
                 </RadioButton>
@@ -245,6 +263,8 @@
                     android:id="@+id/rdbRetrait"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/niv1"
+                    android:textColor="@color/niv1"
                     android:text="@string/retrait">
 
                 </RadioButton>
@@ -253,6 +273,8 @@
                     android:id="@+id/rdbVirement"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/niv1"
+                    android:textColor="@color/niv1"
                     android:text="@string/virement">
 
                 </RadioButton>
@@ -270,6 +292,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
+                    android:buttonTint="@color/niv1"
+                    android:textColor="@color/niv1"
                     android:text="@string/cheque">
 
                 </RadioButton>
@@ -278,6 +302,8 @@
                     android:id="@+id/rdbEpargne"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:buttonTint="@color/niv1"
+                    android:textColor="@color/niv1"
                     android:text="@string/epargne">
 
                 </RadioButton>
@@ -300,6 +326,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:backgroundTint="@color/niv3"
                 android:text="@string/etat_des_comptes">
 
             </Button>
@@ -310,6 +337,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:backgroundTint="@color/niv3"
+                android:onClick="onClickSoumettre"
                 android:text="@string/soumettre">
 
             </Button>
@@ -322,6 +351,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:textColor="@color/niv1"
             android:text="Placeholder"/>
 
         <TextView
@@ -329,6 +359,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
+            android:textColor="@color/niv1"
             android:text="Placeholder"/>
 
     </LinearLayout>

@@ -8,6 +8,7 @@
     android:paddingTop="60dp"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
+    android:background="@color/fond"
     tools:context=".Guichet">
 
 
@@ -22,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="4"
+            android:textColor="@color/niv1"
             android:text="@string/bonjour">
 
         </TextView>
@@ -33,6 +35,7 @@
             android:layout_weight="1"
             android:layout_margin="5dp"
             android:onClick="onClickDeconnection"
+            android:backgroundTint="@color/niv3"
             android:text="@string/deconnection">
 
         </Button>
@@ -50,6 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="5dp"
+            android:backgroundTint="@color/niv3"
             android:onClick="onClickZero"
             android:text="@string/zero">
 
@@ -61,6 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_weight="1"
+            android:backgroundTint="@color/niv3"
             android:onClick="onClickUn"
             android:text="@string/un">
 
@@ -72,6 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/niv3"
             android:onClick="onClickDeux"
             android:text="@string/deux">
 
@@ -83,6 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/niv3"
             android:onClick="onClickTrois"
             android:text="@string/trois">
 
@@ -101,6 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="@color/niv3"
             android:onClick="onClickQuatre"
             android:text="@string/quatre">
 
@@ -113,6 +121,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onClickCinq"
+            android:backgroundTint="@color/niv3"
             android:text="@string/cinq">
 
         </Button>
@@ -124,6 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onClickSix"
+            android:backgroundTint="@color/niv3"
             android:text="@string/six">
 
         </Button>
@@ -135,6 +145,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onClickSept"
+            android:backgroundTint="@color/niv3"
             android:text="@string/sept">
 
         </Button>
@@ -154,6 +165,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onClickHuit"
+            android:backgroundTint="@color/niv3"
             android:text="@string/huit">
 
         </Button>
@@ -165,6 +177,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onClickNeuf"
+            android:backgroundTint="@color/niv3"
             android:text="@string/neuf">
 
         </Button>
@@ -176,6 +189,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onClickPoint"
+            android:backgroundTint="@color/niv3"
             android:text="@string/point">
 
         </Button>
@@ -187,6 +201,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onClcikEffacer"
+            android:backgroundTint="@color/niv3"
             android:text="@string/effacer">
 
         </Button>
@@ -201,6 +216,7 @@
         android:editable="false"
         android:clickable="false"
         android:text="@string/zero"
+        android:textColor="@color/niv1"
         android:autofillHints="">
 
     </EditText>
@@ -222,6 +238,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
+                android:buttonTint="@color/niv1"
+                android:textColor="@color/niv1"
                 android:text="@string/depot">
 
             </RadioButton>
@@ -230,6 +248,8 @@
                 android:id="@+id/rdbRetrait"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/niv1"
+                android:buttonTint="@color/niv1"
                 android:text="@string/retrait">
 
             </RadioButton>
@@ -238,6 +258,8 @@
                 android:id="@+id/rdbVirement"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/niv1"
+                android:buttonTint="@color/niv1"
                 android:text="@string/virement">
 
             </RadioButton>
@@ -256,6 +278,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
+                android:buttonTint="@color/niv1"
+                android:textColor="@color/niv1"
                 android:text="@string/cheque">
 
             </RadioButton>
@@ -264,6 +288,8 @@
                 android:id="@+id/rdbEpargne"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/niv1"
+                android:buttonTint="@color/niv1"
                 android:text="@string/epargne">
 
             </RadioButton>
@@ -287,6 +313,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:backgroundTint="@color/niv3"
             android:text="@string/etat_des_comptes">
 
         </Button>
@@ -297,6 +324,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:backgroundTint="@color/niv3"
+            android:onClick="onClickSoumettre"
             android:text="@string/soumettre">
 
         </Button>
@@ -310,6 +339,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
+        android:textColor="@color/niv1"
         android:text="Placeholder"/>
 
     <TextView
@@ -317,6 +347,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
+        android:textColor="@color/niv1"
         android:text="Placeholder"/>
 
 

@@ -1,9 +1,10 @@
 package Class;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.Objects;
 
-public abstract class Compte implements Comparable {
+public abstract class Compte implements Serializable {
 
     private int nip;
     private String numero;
@@ -47,11 +48,11 @@ public abstract class Compte implements Comparable {
         String soldeAffichage = new DecimalFormat("#.##").format(solde);
 
         if (solde - montant < 0) {
-            chaine = "Fond insufisant. Solde actuel " + soldeAffichage;
+            chaine = "Fond insufisant.";
             return chaine;
         }
         if (montant % 10 != 0) {
-            chaine = "Les plus petits billets distribués par le guichet sont de 10$.\nVous ne pouvez pas retirer " + montant + "$";
+            chaine = "Les plus petits billets distribués par le guichet sont de 10$.";
             return chaine;
         }
         if (montant > 1000) {
@@ -97,24 +98,6 @@ public abstract class Compte implements Comparable {
         return nip == compte.nip && numero.equals(compte.numero);
     }
 
-    @Override
-    public int compareTo(Object o) {
-        Compte autre = (Compte) o;
-
-        double soldeCompteThis;
-        double soldeCompteAutre;
-
-        soldeCompteThis = this.getSolde();
-        soldeCompteAutre = autre.getSolde();
-
-        if (soldeCompteThis > soldeCompteAutre) {
-            return 1;
-        }
-        if (soldeCompteThis < soldeCompteAutre) {
-            return -1;
-        }
-        return 0;
-    }
 
     public int getNip() {
         return nip;

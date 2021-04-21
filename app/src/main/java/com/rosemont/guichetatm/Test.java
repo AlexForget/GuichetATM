@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import Class.Guichet;
+import Class.GuichetATM;
 import Class.Client;
 import Class.Cheque;
 import Class.Epargne;
@@ -15,9 +15,9 @@ public class Test extends AppCompatActivity {
     Client c1 = new Client("Max", "Bob", "MouF", 1234);
     Compte ch1 = new Cheque(1111, "5h5h", 500);
     Compte ep1 = new Epargne(2222, "1b1b", 10000);
-    Guichet g1 = new Guichet(c1, (Cheque)ch1, (Epargne)ep1);
+    GuichetATM g1 = new GuichetATM();
 
-    Guichet g2 = new Guichet(g1);
+    //GuichetATM g2 = new GuichetATM(g1);
 
 
     @Override
@@ -46,7 +46,7 @@ public class Test extends AppCompatActivity {
         TextView affichage = findViewById(R.id.affichageCompte);
         String test = "";
 
-        test = g2.toString();
+        //test = g2.toString();
 
         affichage.setText(test);
 

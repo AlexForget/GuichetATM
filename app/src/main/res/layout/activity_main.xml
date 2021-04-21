@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:paddingTop="50dp"
     android:paddingHorizontal="20dp"
+    android:background="@color/fond"
     tools:context=".MainActivity">
 
 
@@ -15,6 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
+        android:textColor="@color/niv1"
+        android:textColorHint="@color/niv1"
         android:autofillHints="@string/nom_utilisateur"
         android:hint="@string/nom_utilisateur" />
 
@@ -22,9 +25,11 @@
         android:id="@+id/editTxtNip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/niv1"
+        android:textColorHint="@color/niv1"
         android:autofillHints="@string/nip"
         android:hint="@string/nip"
-        android:inputType="numberPassword" />
+        android:inputType="textPassword" />
 
     <RelativeLayout
         android:layout_width="fill_parent"

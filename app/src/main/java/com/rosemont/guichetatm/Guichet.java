@@ -7,14 +7,31 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import Class.GuichetATM;
+import Class.Client;
+import Class.Cheque;
+import Class.Epargne;
+import Class.Compte;
 
 public class Guichet extends AppCompatActivity {
     private static final String TAG = "Message";
     private static final String cleValue = "Value";
     String montant = "0";
+
+    int nip;
+    String utilisateur;
+    String numCptCheque;
+    String numCptEpargne;
+    double soldeCheque;
+    double soldeEpargne;
+
+    GuichetATM guichet = new GuichetATM();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +41,18 @@ public class Guichet extends AppCompatActivity {
         if(savedInstanceState != null){
             montant = savedInstanceState.getString(cleValue);
         }
+
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+
+        nip = extras.getInt("nip");
+        utilisateur = extras.getString("utilisateur");
+        soldeCheque = extras.getDouble("soldeChqs");
+        soldeEpargne = extras.getDouble("soldeEpa");
+        numCptCheque = extras.getString("numCptChqs");
+        numCptEpargne = extras.getString("numCptEpa");
+
+        guichet.setGuichet(nip, soldeCheque, soldeEpargne, this);
 
         Log.i(TAG, "onCreate");
     }
@@ -54,16 +83,91 @@ public class Guichet extends AppCompatActivity {
     }
 
 
-
-
     public void onClickDeconnection(View view) {
-        setResult(RESULT_OK);
+        Bundle dataRetour = new Bundle();
+
+        dataRetour.putInt("nip", nip);
+        dataRetour.putDouble("sldCheque", soldeCheque);
+        dataRetour.putDouble("sldEpargne", soldeEpargne);
+
+        Intent retourConnection = new Intent(this, MainActivity.class);
+        setResult(1, retourConnection);
+        retourConnection.putExtras(dataRetour);
         finish();
     }
 
     public void onClickEtatCompte(View view) {
-        Intent ecranAdministrateur = new Intent(this, EcranAdministrateur.class);
-        startActivity(ecranAdministrateur);
+        TextView soldeChqs = findViewById(R.id.txtSoldeCheque);
+        TextView soldeEpa = findViewById(R.id.txtSoldeEpargne);
+
+        soldeChqs.setText(String.format("Solde du compte chèque : %s", soldeCheque));
+        soldeEpa.setText(String.format("Solde du compte épargne : %s", soldeEpargne));
+    }
+
+    public double getSoldeCheque() {
+        double retour = 0;
+
+        for (Cheque chqs : guichet.getComptesCheque()) {
+            if (nip == chqs.getNip()) {
+                retour = chqs.getSolde();
+            }
+        }
+        return retour;
+    }
+
+    public double getSoldeEpargne() {
+        double retour = 0;
+
+        for (Epargne ep : guichet.getComptesEpargne()) {
+            if (nip == ep.getNip()) {
+                retour = ep.getSolde();
+            }
+        }
+        return retour;
+    }
+
+    public void onClickSoumettre(View view) {
+        RadioButton rdbDepot = findViewById(R.id.rdbDepot);
+        RadioButton rdbRetrait = findViewById(R.id.rdbRetrait);
+        RadioButton rdbVirement = findViewById(R.id.rdbVirement);
+        RadioButton rdbCheque = findViewById(R.id.rdbCheque);
+        RadioButton rdbEpargne = findViewById(R.id.rdbEpargne);
+        EditText montantEntre = findViewById(R.id.edtTxtMontantEntre);
+        TextView soldeChqs = findViewById(R.id.txtSoldeCheque);
+        TextView soldeEpa = findViewById(R.id.txtSoldeEpargne);
+        double montantDouble = Double.parseDouble(montant);
+        String chaine = "";
+
+        if (rdbRetrait.isChecked() && rdbCheque.isChecked() && montantDouble > 0) {
+            chaine = guichet.retraitCheque(nip, montantDouble);
+            soldeCheque = getSoldeCheque();
+        }
+        if (rdbDepot.isChecked() && rdbCheque.isChecked() && montantDouble > 0) {
+            chaine = guichet.depotCheque(nip, montantDouble);
+            soldeCheque = getSoldeCheque();
+        }
+        if (rdbDepot.isChecked() && rdbEpargne.isChecked() && montantDouble > 0) {
+            chaine = guichet.depotEpargne(nip, montantDouble);
+            soldeEpargne = getSoldeEpargne();
+        }
+        if (rdbRetrait.isChecked() && rdbEpargne.isChecked() && montantDouble > 0) {
+            chaine = guichet.retraitEpargne(nip, montantDouble);
+            soldeEpargne = getSoldeEpargne();
+        }
+        if (rdbVirement.isChecked() && rdbCheque.isChecked() && montantDouble > 0) {
+            chaine = guichet.virementVersCheque(nip, montantDouble);
+        }
+        if (rdbVirement.isChecked() && rdbEpargne.isChecked() && montantDouble > 0) {
+            chaine = guichet.virementVersEpargne(nip, montantDouble);
+        }
+
+        if (!chaine.equals("")) {
+            Toast.makeText(view.getContext(), chaine, Toast.LENGTH_SHORT).show();
+            montant = "0";
+            montantEntre.setText("0");
+            soldeChqs.setText("");
+            soldeEpa.setText("");
+        }
     }
 
     public void onClickZero(View view) {
@@ -115,7 +219,7 @@ public class Guichet extends AppCompatActivity {
     public void onClcikEffacer(View view) {
         EditText montantEntre = findViewById(R.id.edtTxtMontantEntre);
 
-        montant = "";
+        montant = "0";
         montantEntre.setText("0");
     }
 
@@ -127,12 +231,10 @@ public class Guichet extends AppCompatActivity {
             montantEntre.setText(montant);
             return;
         }
-
         if (validerMontant(montant + c)) {
             montant = montant + c;
             montantEntre.setText(montant);
         }
-
     }
 
     public boolean validerMontant(String aValider) {
@@ -146,4 +248,6 @@ public class Guichet extends AppCompatActivity {
 
         return matcher.matches();
     }
+
+
 }

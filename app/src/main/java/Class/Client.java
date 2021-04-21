@@ -1,6 +1,8 @@
 package Class;
 
-public class Client implements Comparable {
+import java.io.Serializable;
+
+public class Client implements Serializable {
 
     private String nom;
     private String prenom;
@@ -41,24 +43,6 @@ public class Client implements Comparable {
                 nomUtilisateur.equals(client.nomUtilisateur);
     }
 
-    @Override
-    public int compareTo(Object o) {
-        Client autre = (Client) o;
-
-        if (this.getNom().compareToIgnoreCase(autre.getNom()) < 0) {
-            return 1;
-        }
-        if (this.getNom().compareToIgnoreCase(autre.getNom()) > 0) {
-            return -1;
-        }
-        if (this.getPrenom().compareToIgnoreCase(autre.getPrenom()) < 0) {
-            return 1;
-        }
-        if (this.getPrenom().compareToIgnoreCase(autre.getPrenom()) > 0) {
-            return -1;
-        }
-        return 0;
-    }
 
     public String getNom() {
         return nom;

@@ -1,8 +1,9 @@
 package Class;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 
-public class Epargne extends Compte {
+public class Epargne extends Compte implements Serializable {
 
     final private double TAUX_INTERET = 0.0125;
 
