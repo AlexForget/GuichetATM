@@ -11,7 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="120dp">
+        android:paddingTop="90dp">
 
         <Button
             android:id="@+id/btnPaiementInteret"
@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:backgroundTint="@color/niv3"
+            android:onClick="onClickPaiementInterets"
             android:text="@string/paiement_interets">
 
         </Button>
@@ -75,5 +76,25 @@
         </Button>
 
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:paddingTop="30dp"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnDeconnectionAdmin"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/niv3"
+            android:onClick="onClickDeconnectionAdmin"
+            android:text="@string/deconnection">
+
+        </Button>
+
+    </RelativeLayout>
+
+
 
 </LinearLayout>

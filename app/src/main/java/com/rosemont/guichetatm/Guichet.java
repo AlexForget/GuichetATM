@@ -14,10 +14,8 @@ import android.widget.Toast;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import Class.GuichetATM;
-import Class.Client;
 import Class.Cheque;
 import Class.Epargne;
-import Class.Compte;
 
 public class Guichet extends AppCompatActivity {
     private static final String TAG = "Message";
@@ -25,6 +23,8 @@ public class Guichet extends AppCompatActivity {
     String montant = "0";
 
     int nip;
+    String prenom;
+    String nom;
     String utilisateur;
     String numCptCheque;
     String numCptEpargne;
@@ -51,8 +51,13 @@ public class Guichet extends AppCompatActivity {
         soldeEpargne = extras.getDouble("soldeEpa");
         numCptCheque = extras.getString("numCptChqs");
         numCptEpargne = extras.getString("numCptEpa");
+        prenom = extras.getString("prenom");
+        nom = extras.getString("nom");
 
-        guichet.setGuichet(nip, soldeCheque, soldeEpargne, this);
+        guichet.setGuichetPourTransaction(nip, soldeCheque, soldeEpargne, this);
+
+        TextView bonjour = findViewById(R.id.txtBonjour);
+        bonjour.setText(String.format("Bonjour %s %s", prenom, nom));
 
         Log.i(TAG, "onCreate");
     }
@@ -82,7 +87,7 @@ public class Guichet extends AppCompatActivity {
         Log.i(TAG, "onRestoreInstanceState");
     }
 
-
+    // Cré un bundle pour retourner les valeurs modifié à l'activité précédente
     public void onClickDeconnection(View view) {
         Bundle dataRetour = new Bundle();
 
@@ -156,9 +161,13 @@ public class Guichet extends AppCompatActivity {
         }
         if (rdbVirement.isChecked() && rdbCheque.isChecked() && montantDouble > 0) {
             chaine = guichet.virementVersCheque(nip, montantDouble);
+            soldeEpargne = getSoldeEpargne();
+            soldeCheque = getSoldeCheque();
         }
         if (rdbVirement.isChecked() && rdbEpargne.isChecked() && montantDouble > 0) {
             chaine = guichet.virementVersEpargne(nip, montantDouble);
+            soldeEpargne = getSoldeEpargne();
+            soldeCheque = getSoldeCheque();
         }
 
         if (!chaine.equals("")) {
@@ -167,6 +176,7 @@ public class Guichet extends AppCompatActivity {
             montantEntre.setText("0");
             soldeChqs.setText("");
             soldeEpa.setText("");
+            onClickEtatCompte(view);
         }
     }
 
@@ -232,7 +242,7 @@ public class Guichet extends AppCompatActivity {
             return;
         }
         if (validerMontant(montant + c)) {
-            montant = montant + c;
+            montant += c;
             montantEntre.setText(montant);
         }
     }

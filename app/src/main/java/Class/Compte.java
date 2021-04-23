@@ -2,7 +2,6 @@ package Class;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
-import java.util.Objects;
 
 public abstract class Compte implements Serializable {
 
@@ -76,6 +75,7 @@ public abstract class Compte implements Serializable {
         chaine = "Le dépôt de " + montant + "$ a été completé.";
         return chaine;
     }
+
 
     @Override
     public String toString() {

@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
                 android:textColor="@color/niv1"
+                android:textSize="14sp"
                 android:text="@string/bonjour">
 
             </TextView>
@@ -327,6 +328,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/niv3"
+                android:onClick="onClickEtatCompte"
                 android:text="@string/etat_des_comptes">
 
             </Button>
@@ -351,16 +353,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textColor="@color/niv1"
-            android:text="Placeholder"/>
+            android:textColor="@color/niv1" />
 
         <TextView
             android:id="@+id/txtSoldeEpargne"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textColor="@color/niv1"
-            android:text="Placeholder"/>
+            android:textColor="@color/niv1" />
 
     </LinearLayout>
 

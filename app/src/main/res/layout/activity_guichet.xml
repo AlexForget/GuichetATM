@@ -19,12 +19,12 @@
 
         <TextView
             android:id="@+id/txtBonjour"
-            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="4"
+            android:text="@string/bonjour"
             android:textColor="@color/niv1"
-            android:text="@string/bonjour">
+            android:textSize="14sp">
 
         </TextView>
 
@@ -308,12 +308,12 @@
 
         <Button
             android:id="@+id/btnEtatComptes"
-            android:onClick="onClickEtatCompte"
-            android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:layout_weight="1"
             android:backgroundTint="@color/niv3"
+            android:onClick="onClickEtatCompte"
             android:text="@string/etat_des_comptes">
 
         </Button>
@@ -339,16 +339,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textColor="@color/niv1"
-        android:text="Placeholder"/>
+        android:textColor="@color/niv1" />
 
     <TextView
         android:id="@+id/txtSoldeEpargne"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textColor="@color/niv1"
-        android:text="Placeholder"/>
+        android:textColor="@color/niv1" />
 
 
 </LinearLayout>

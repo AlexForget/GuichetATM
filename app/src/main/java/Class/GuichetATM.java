@@ -1,10 +1,7 @@
 package Class;
 
-import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +17,7 @@ public class GuichetATM {
     }
 
     public GuichetATM() {
-        clients.add(new Client("Forget", "Alex", "alex", 123));
+        clients.add(new Client("Forget", "Alexandre", "alex", 123));
         clients.add(new Client("Paquette", "Josée", "josée", 456));
         clients.add(new Client("Lavigne", "Michael", "mike", 789));
         clients.add(new Client("Lambert", "Jonathan", "jo", 159));
@@ -37,7 +34,6 @@ public class GuichetATM {
     }
 
     public boolean validerUtilisateur(String nomUtilisateur, String nip) {
-        // user : Admin - nip : 001
         if (nomUtilisateur.equals("") || (nip.equals(""))){
             return false;
         }
@@ -49,13 +45,15 @@ public class GuichetATM {
         return false;
     }
 
-    public Bundle getBundle(String utilisateur, int nip) {
+    public Bundle getBundlePourGuichet(String utilisateur, int nip) {
         Bundle bundle = new Bundle();
 
         for (Client cl : clients) {
             if (cl.getNomUtilisateur().equals(utilisateur) && cl.getNip() == nip) {
                 bundle.putString("utilisateur", cl.getNomUtilisateur());
                 bundle.putInt("nip", cl.getNip());
+                bundle.putString("prenom", cl.getPrenom());
+                bundle.putString("nom", cl.getNom());
             }
         }
         for (Cheque chqs : comptesCheques) {
@@ -70,6 +68,18 @@ public class GuichetATM {
                 bundle.putDouble("soldeEpa", epa.getSolde());
             }
         }
+        return bundle;
+    }
+
+    public Bundle getBundlePourAdministrateur() {
+        Bundle bundle = new Bundle();
+        double[] soldesEpargne = new double[comptesEpargnes.size()];
+
+        for (int i = 0; i < comptesEpargnes.size(); i++) {
+            soldesEpargne[i] = comptesEpargnes.get(i).getSolde();
+        }
+        bundle.putDoubleArray("soldeEpargnes", soldesEpargne);
+
         return bundle;
     }
 
@@ -131,14 +141,68 @@ public class GuichetATM {
     }
 
     public String virementVersCheque(int nip, double montant) {
-        return "Virement vers le compte chéque";
+        Cheque cptChqs = null;
+        Epargne cptEpa = null;
+
+        for (Cheque ch : comptesCheques) {
+            if (nip == ch.getNip()) {
+                cptChqs = ch;
+            }
+        }
+        for (Epargne ep : comptesEpargnes) {
+            if (nip == ep.getNip()) {
+                cptEpa = ep;
+            }
+        }
+        if (cptEpa.getSolde() - montant < 0) {
+            return "Solde insuffisant pour faire le transfert";
+        }
+        if (montant > 100000) {
+            return "Le montant de transfert maximal est de 100 000$";
+        }
+        cptEpa.setSolde(cptEpa.getSolde() - montant);
+        cptChqs.setSolde(cptChqs.getSolde() + montant);
+
+        return "Le transfert de "+ montant +" a bien été completé.";
     }
 
     public String virementVersEpargne(int nip, double montant) {
-        return "Virement vers le compte épargne";
+        Cheque cptChqs = null;
+        Epargne cptEpa = null;
+
+        for (Cheque ch : comptesCheques) {
+            if (nip == ch.getNip()) {
+                cptChqs = ch;
+            }
+        }
+        for (Epargne ep : comptesEpargnes) {
+            if (nip == ep.getNip()) {
+                cptEpa = ep;
+            }
+        }
+        if (cptChqs.getSolde() - montant < 0) {
+            return "Solde insuffisant pour faire le transfert";
+        }
+        if (montant > 100000) {
+            return "Le montant de transfert maximal est de 100 000$";
+        }
+        cptEpa.setSolde(cptEpa.getSolde() + montant);
+        cptChqs.setSolde(cptChqs.getSolde() - montant);
+
+        return "Le transfert de "+ montant +" a bien été completé.";
     }
 
-    public void setGuichet(int nip, double soldeChqs, double soldeEpargne, Context ctx) {
+    public double paiementInterets() {
+        Epargne e = new Epargne();
+        double interet = e.getTauxInteret();
+
+        for (Epargne epargne : comptesEpargnes) {
+            epargne.setSolde(epargne.getSolde() + epargne.getSolde() * interet);
+        }
+        return interet;
+    }
+
+    public void setGuichetPourTransaction(int nip, double soldeChqs, double soldeEpargne, Context ctx) {
         for (Cheque cheque : comptesCheques) {
             if (cheque.getNip() == nip) {
                 cheque.setSolde(soldeChqs);
@@ -148,6 +212,12 @@ public class GuichetATM {
             if (epargne.getNip() == nip) {
                 epargne.setSolde(soldeEpargne);
             }
+        }
+    }
+
+    public void setGuichetPourAdministrateur(double[] soldesEpargne, Context ctx) {
+        for (int i = 0; i < comptesEpargnes.size(); i++) {
+            comptesEpargnes.get(i).setSolde(soldesEpargne[i]);
         }
     }
 
@@ -173,10 +243,5 @@ public class GuichetATM {
 
     public void setComptesEpargne(List<Epargne> comptesEpargnes) {
         this.comptesEpargnes = comptesEpargnes;
-    }
-
-
-    public String test() {
-        return "test";
     }
 }
