@@ -11,6 +11,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import Class.GuichetATM;
@@ -105,8 +107,20 @@ public class Guichet extends AppCompatActivity {
         TextView soldeChqs = findViewById(R.id.txtSoldeCheque);
         TextView soldeEpa = findViewById(R.id.txtSoldeEpargne);
 
-        soldeChqs.setText(String.format("Solde du compte chèque : %s", soldeCheque));
-        soldeEpa.setText(String.format("Solde du compte épargne : %s", soldeEpargne));
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.CANADA_FRENCH);
+
+        String soldeChequeFormat = formatterDouble(soldeCheque);
+        String soldeEpargneFormat = formatterDouble(soldeEpargne);
+
+        soldeChqs.setText("Solde du compte chèque : " + soldeChequeFormat);
+        soldeEpa.setText("Solde du compte épargne : " + soldeEpargneFormat);
+    }
+
+    private String formatterDouble(double solde) {
+
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.CANADA_FRENCH);
+
+        return formatter.format(solde);
     }
 
     public double getSoldeCheque() {

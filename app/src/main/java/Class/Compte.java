@@ -2,6 +2,8 @@ package Class;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public abstract class Compte implements Serializable {
 
@@ -10,41 +12,22 @@ public abstract class Compte implements Serializable {
     private double solde;
 
 
-    /**
-     * Constructeur a deux arguments
-     * @param nip numéro d'identification du compte
-     * @param numeroCompte numéro de compte
-     * @param soldeCompte solde du compte
-     */
     Compte(int nip, String numeroCompte, double soldeCompte) {
         this.nip = nip;
         this.numero = numeroCompte;
         this.solde = soldeCompte;
     }
 
-    /**
-     * Constructeur sans arguments
-     */
     Compte() {
         this(123, "xxx", 0);
     }
 
-    /**
-     * Constructeur par copie
-     * @param autre Compte source pour faire une copie
-     */
     Compte(Compte autre) {
         this(autre.nip, autre.numero, autre.solde);
     }
 
-    /**
-     * Effectuer un retrait par multiple de 10
-     * @param montant Le montant du retrait a effectué. Le retrait ne peut pas dépassé le solde restant.
-     * @return Retourne le résultat du retrait. Si le retrait n'a pas pu être effectué retourne la raison.
-     */
     public String retrait(double montant) {
         String chaine;
-        String soldeAffichage = new DecimalFormat("#.##").format(solde);
 
         if (solde - montant < 0) {
             chaine = "Fond insufisant.";
@@ -59,21 +42,25 @@ public abstract class Compte implements Serializable {
             return chaine;
         }
         solde -= montant;
-        chaine = "Le retrait de " + montant + "$ a été completé.";
+        String montantFormatter = formatterDouble(montant);
+        chaine = "Le retrait de " + montantFormatter + " a été completé.";
         return chaine;
     }
 
-    /**
-     * Effectuer un dépôt
-     * @param montant Montant du dépôt à effectué.
-     * @return Retourne le résultat du dépôt.
-     */
     public String depot(double montant) {
         String chaine;
 
         solde += montant;
-        chaine = "Le dépôt de " + montant + "$ a été completé.";
+        String montantFormatter = formatterDouble(montant);
+        chaine = "Le dépôt de " + montantFormatter + " a été completé.";
         return chaine;
+    }
+
+    private String formatterDouble(double montant) {
+
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.CANADA_FRENCH);
+
+        return formatter.format(montant);
     }
 
 

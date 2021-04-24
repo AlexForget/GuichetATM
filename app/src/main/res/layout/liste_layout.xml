@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false"
+    android:background="@color/fond"
     android:orientation="vertical">
 
     <TextView
@@ -12,7 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textSize="20sp">
+        android:textColor="@color/niv1"
+        android:textSize="14sp">
 
     </TextView>
 

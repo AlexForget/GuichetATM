@@ -10,7 +10,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Currency;
 import java.util.List;
+import java.util.Locale;
 
 import Class.Cheque;
 
@@ -44,8 +48,10 @@ public class AndroidAdapterCheque extends ArrayAdapter<Cheque> {
             final TextView numeroCompteCheque = (TextView) view.findViewById(R.id.txtNumeroCompteCheque);
             final TextView soldeCompteCheque = (TextView) view.findViewById(R.id.txtSoldeCompteCheque);
 
+            String formatSolde = formatterDouble(position);
+
             String numCompteChequeStr = res.getString(R.string.numero_compte_cheque) + " : " + cheque.getNumero();
-            String soldeChequeStr = res.getString(R.string.solde_compte_cheque) + " : " + cheque.getSolde();
+            String soldeChequeStr = res.getString(R.string.solde_compte_cheque) + " : " + formatSolde;
 
             numeroCompteCheque.setText(numCompteChequeStr);
             soldeCompteCheque.setText(soldeChequeStr);
@@ -57,4 +63,13 @@ public class AndroidAdapterCheque extends ArrayAdapter<Cheque> {
     public int getCount() {
         return listeCheque.size();
     }
+
+    private String formatterDouble(int position) {
+
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.CANADA_FRENCH);
+        double solde = listeCheque.get(position).getSolde();
+
+        return formatter.format(solde);
+    }
+
 }

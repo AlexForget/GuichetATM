@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     int nip;
     double soldeCheque;
     double soldeEpargne;
+    double[] soldeChequeAdmin;
     double[] soldeEpargneAdmin;
 
     @Override
@@ -34,20 +35,23 @@ public class MainActivity extends AppCompatActivity {
         String nipAValider = txtNip.getText().toString();
 
         // Si c'est l'admin qui se connecte, intent vers l'écran d'administrateur
-        if (nomUtilisateurAValier.equals("Admin") && nipAValider.equals("111")) {
+        if (nomUtilisateurAValier.equals("Admin") && nipAValider.equals("D001")) {
             Bundle extrasPourAdministrateur = guichet.getBundlePourAdministrateur();
 
             Intent ecranAdmin = new Intent(this, EcranAdministrateur.class);
             ecranAdmin.putExtras(extrasPourAdministrateur);
 
             startActivityForResult(ecranAdmin, REQUEST_FENETRE_PRINCIPALE);
+            compteurs = 0;
 
         // Si ce n'est pas l'admin et que les info de login ne sont pas valide, envoie un message
         } else if (!guichet.validerUtilisateur(nomUtilisateurAValier, nipAValider)) {
-            Toast.makeText(view.getContext(), "Nom d'utilisateur ou NIP invalide", Toast.LENGTH_SHORT).show();
+            if (compteurs < 2){
+                Toast.makeText(view.getContext(), "Nom d'utilisateur ou NIP invalide", Toast.LENGTH_SHORT).show();
+            }
             compteurs++;
             if (compteurs == 3) {
-                Toast.makeText(view.getContext(), "Trois échec de connection. Veuillez essayer de nouveau plus tard.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), "Trois échecs de connection. Veuillez réessayer de nouveau plus tard.", Toast.LENGTH_SHORT).show();
                 finish();
                 System.exit(0);
             }
@@ -55,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         // Si les info de login sont bonne, mets les infos du clients dans un bundle
         // qui sera envoyé à l'activité du guichet
         } else {
+            compteurs = 0;
             Bundle extrasPourGuichet = guichet.getBundlePourGuichet(nomUtilisateurAValier, Integer.parseInt(nipAValider));
 
             Intent versGuichet = new Intent(this, Guichet.class);
@@ -77,8 +82,10 @@ public class MainActivity extends AppCompatActivity {
                 guichet.setGuichetPourTransaction(nip, soldeCheque, soldeEpargne, this);
             }
             if (resultCode == 2){
+                soldeChequeAdmin = dataRetour.getDoubleArrayExtra("soldeCheques");
                 soldeEpargneAdmin = dataRetour.getDoubleArrayExtra("soldeEpargnes");
-                guichet.setGuichetPourAdministrateur(soldeEpargneAdmin, this);
+
+                guichet.setGuichetPourAdministrateur(soldeChequeAdmin, soldeEpargneAdmin, this);
             }
         }
 

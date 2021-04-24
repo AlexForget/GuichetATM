@@ -7,27 +7,14 @@ public class Epargne extends Compte implements Serializable {
 
     final private double TAUX_INTERET = 0.0125;
 
-    /**
-     * Constructeur à trois arguments
-     * @param nip NIP du compte
-     * @param numero Numéro du compte
-     * @param solde Solde en dollars du compte
-     */
     public Epargne(int nip, String numero, double solde) {
         super(nip, numero, solde);
     }
 
-    /**
-     * Constructeur sans arguments
-     */
     public Epargne() {
         this(123, "xyz", 0);
     }
 
-    /**
-     * Constructeur par copie
-     * @param autre Compte copié pour construire le nouveau compte.
-     */
     public Epargne(Cheque autre) {
         this(autre.getNip(), autre.getNumero(), autre.getSolde());
     }

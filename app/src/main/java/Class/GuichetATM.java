@@ -2,8 +2,11 @@ package Class;
 
 import android.content.Context;
 import android.os.Bundle;
+
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class GuichetATM {
 
@@ -73,21 +76,19 @@ public class GuichetATM {
 
     public Bundle getBundlePourAdministrateur() {
         Bundle bundle = new Bundle();
+        double[] soldesCheques = new double[comptesCheques.size()];
         double[] soldesEpargne = new double[comptesEpargnes.size()];
-        String[] clientPrenom = new String[clients.size()];
-        String[] clientNom = new String[clients.size()];
+
+        for (int i = 0; i < comptesCheques.size(); i++) {
+            soldesCheques[i] = comptesCheques.get(i).getSolde();
+        }
 
         for (int i = 0; i < comptesEpargnes.size(); i++) {
             soldesEpargne[i] = comptesEpargnes.get(i).getSolde();
         }
-        for (int i = 0; i < clients.size(); i++) {
-            clientPrenom[i] = clients.get(i).getPrenom();
-            clientNom[i] = clients.get(i).getNom();
-        }
 
+        bundle.putDoubleArray("soldeCheques", soldesCheques);
         bundle.putDoubleArray("soldeEpargnes", soldesEpargne);
-        bundle.putStringArray("clientPrenom", clientPrenom);
-        bundle.putStringArray("clientNom", clientNom);
 
         return bundle;
     }
@@ -172,7 +173,9 @@ public class GuichetATM {
         cptEpa.setSolde(cptEpa.getSolde() - montant);
         cptChqs.setSolde(cptChqs.getSolde() + montant);
 
-        return "Le transfert de "+ montant +" a bien été completé.";
+        String montantFormatter = formatterDouble(montant);
+
+        return "Le transfert de "+ montantFormatter +" vers le compte chèque a bien été completé.";
     }
 
     public String virementVersEpargne(int nip, double montant) {
@@ -198,7 +201,9 @@ public class GuichetATM {
         cptEpa.setSolde(cptEpa.getSolde() + montant);
         cptChqs.setSolde(cptChqs.getSolde() - montant);
 
-        return "Le transfert de "+ montant +" a bien été completé.";
+        String montantFormatter = formatterDouble(montant);
+
+        return "Le transfert de "+ montantFormatter +" vers le compte épargne a bien été completé.";
     }
 
     public double paiementInterets() {
@@ -209,6 +214,13 @@ public class GuichetATM {
             epargne.setSolde(epargne.getSolde() + epargne.getSolde() * interet);
         }
         return interet;
+    }
+
+    private String formatterDouble(double montant) {
+
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.CANADA_FRENCH);
+
+        return formatter.format(montant);
     }
 
     public void setGuichetPourTransaction(int nip, double soldeChqs, double soldeEpargne, Context ctx) {
@@ -224,7 +236,11 @@ public class GuichetATM {
         }
     }
 
-    public void setGuichetPourAdministrateur(double[] soldesEpargne, Context ctx) {
+    public void setGuichetPourAdministrateur(double[] soldesCheques, double[] soldesEpargne, Context ctx) {
+
+        for (int i = 0; i < comptesCheques.size(); i++) {
+            comptesCheques.get(i).setSolde(soldesCheques[i]);
+        }
         for (int i = 0; i < comptesEpargnes.size(); i++) {
             comptesEpargnes.get(i).setSolde(soldesEpargne[i]);
         }
@@ -242,15 +258,4 @@ public class GuichetATM {
         return comptesEpargnes;
     }
 
-    public void setClients(ArrayList<Client> clients) {
-        this.clients = clients;
-    }
-
-    public void setCompteCheques(List<Cheque> compteCheques) {
-        this.comptesCheques = compteCheques;
-    }
-
-    public void setComptesEpargne(List<Epargne> comptesEpargnes) {
-        this.comptesEpargnes = comptesEpargnes;
-    }
 }

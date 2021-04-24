@@ -2,6 +2,7 @@ package com.rosemont.guichetatm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -14,18 +15,25 @@ import Class.Epargne;
 
 public class ListeCompteEpargne extends AppCompatActivity {
 
-    GuichetATM guichet;
+    GuichetATM guichet = new GuichetATM();
+    double[] soldesCheques;
+    double[] soldesEpargne;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liste_layout);
 
-        guichet = new GuichetATM();
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+
+        soldesCheques = extras.getDoubleArray("soldeCheques");
+        soldesEpargne = extras.getDoubleArray("soldeEpargnes");
+
+        guichet.setGuichetPourAdministrateur(soldesCheques, soldesEpargne, this);
 
         List<Epargne> listeEpargne;
         listeEpargne = guichet.getComptesEpargne();
-
 
         AndroidAdapterEpargne adapter = new AndroidAdapterEpargne(this, R.layout.activity_liste_compte_epargne, listeEpargne);
 

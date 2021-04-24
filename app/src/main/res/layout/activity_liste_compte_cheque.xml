@@ -3,13 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:baselineAligned="false">
+    android:background="@color/fond"
+    android:padding="6dp">
 
     <ImageView
         android:id="@+id/imgClient"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@drawable/logocheque">
+        android:src="@drawable/check">
 
     </ImageView>
 
@@ -23,8 +24,9 @@
             android:id="@+id/txtNumeroCompteCheque"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:textColor="@color/niv1"
+            android:textSize="14sp">
 
         </TextView>
 
@@ -32,7 +34,8 @@
             android:id="@+id/txtSoldeCompteCheque"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textColor="@color/niv1"
+            android:textSize="14sp"
             android:gravity="center_vertical">
 
         </TextView>

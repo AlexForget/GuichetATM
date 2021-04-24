@@ -10,7 +10,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 import Class.Epargne;
 
@@ -40,14 +42,14 @@ public class AndroidAdapterEpargne extends ArrayAdapter<Epargne> {
         }
         final Epargne epargne = listeEpargne.get(position);
         if (epargne != null) {
-            //---------------------
-            //----------------------
-            //----------------------
+
             final TextView numeroCompteEpargne = (TextView) view.findViewById(R.id.txtNumeroCompteEpargne);
             final TextView soldeCompteEpargne = (TextView) view.findViewById(R.id.txtSoldeCompteEpargne);
 
+            String formatSolde = formatterDouble(position);
+
             String numCompteEpargneStr = res.getString(R.string.numero_compte_epargne) + " : " + epargne.getNumero();
-            String soldeEpargneStr = res.getString(R.string.solde_compte_epargne) + " : " + epargne.getSolde();
+            String soldeEpargneStr = res.getString(R.string.solde_compte_epargne) + " : " + formatSolde;
 
             numeroCompteEpargne.setText(numCompteEpargneStr);
             soldeCompteEpargne.setText(soldeEpargneStr);
@@ -58,5 +60,13 @@ public class AndroidAdapterEpargne extends ArrayAdapter<Epargne> {
     @Override
     public int getCount() {
         return listeEpargne.size();
+    }
+
+    private String formatterDouble(int position) {
+
+        NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.CANADA_FRENCH);
+        double solde = listeEpargne.get(position).getSolde();
+
+        return formatter.format(solde);
     }
 }

@@ -17,9 +17,8 @@ import Class.Client;
 
 public class EcranAdministrateur extends AppCompatActivity {
     GuichetATM guichet = new GuichetATM();
+    double[] soldesCheques;
     double[] soldesEpargne;
-    String[] clientPrenom;
-    String[] clientNom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +28,10 @@ public class EcranAdministrateur extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
 
+        soldesCheques = extras.getDoubleArray("soldeCheques");
         soldesEpargne = extras.getDoubleArray("soldeEpargnes");
-        clientPrenom = extras.getStringArray("clientPrenom");
-        clientNom = extras.getStringArray("clientNom");
 
-        guichet.setGuichetPourAdministrateur(soldesEpargne, this);
+        guichet.setGuichetPourAdministrateur(soldesCheques, soldesEpargne, this);
     }
 
     public void onClickPaiementInterets(View view) {
@@ -54,12 +52,22 @@ public class EcranAdministrateur extends AppCompatActivity {
     }
 
     public void onClickListeCheque(View view) {
+
+        Bundle extrasPourAdministrateur = guichet.getBundlePourAdministrateur();
+
         Intent listeCheque = new Intent(this, ListeCompteCheque.class);
+        listeCheque.putExtras(extrasPourAdministrateur);
+
         startActivity(listeCheque);
     }
 
     public void onClickListeEpargne(View view) {
+
+        Bundle extrasPourAdministrateur = guichet.getBundlePourAdministrateur();
+
         Intent listeEpargne = new Intent(this, ListeCompteEpargne.class);
+        listeEpargne.putExtras(extrasPourAdministrateur);
+
         startActivity(listeEpargne);
     }
 
@@ -72,6 +80,7 @@ public class EcranAdministrateur extends AppCompatActivity {
         Bundle dataRetour = new Bundle();
 
         dataRetour.putDoubleArray("soldeEpargnes", soldesEpargne);
+        dataRetour.putDoubleArray("soldeCheques", soldesCheques);
 
         Intent retourConnection = new Intent(this, MainActivity.class);
         setResult(2, retourConnection);
