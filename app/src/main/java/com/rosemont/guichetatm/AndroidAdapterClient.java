@@ -22,7 +22,7 @@ public class AndroidAdapterClient extends ArrayAdapter<Client> {
     private int viewRes;
     private Resources res;
 
-
+    // Constructeur pour AndroidAdapter pour l'affichage de la liste des clients
     public AndroidAdapterClient(@NonNull Context context, int resource, @NonNull List<Client> listeClients) {
         super(context, resource, listeClients);
 
@@ -32,6 +32,7 @@ public class AndroidAdapterClient extends ArrayAdapter<Client> {
         this.res = context.getResources();
     }
 
+    // Permet de remplir les champs dans l'affichage de la liste
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;

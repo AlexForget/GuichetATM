@@ -19,6 +19,7 @@ public class ListeCompteCheque extends AppCompatActivity {
     double[] soldesCheques;
     double[] soldesEpargne;
 
+    // Récupère les information nécessaire et affiche la liste des comptes chèques
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

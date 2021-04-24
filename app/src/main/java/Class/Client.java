@@ -9,6 +9,7 @@ public class Client implements Serializable {
     private String nomUtilisateur;
     private int nip;
 
+    // Constructeur à quatre arguments
     public Client(String nom, String prenom, String nomUtilisateur, int nip) {
         this.nom = nom;
         this.prenom = prenom;
@@ -16,14 +17,17 @@ public class Client implements Serializable {
         this.nip = nip;
     }
 
+    // Constructeur sans argument
     public Client() {
         this("Doe", "John", "Defaut", 123);
     }
 
+    // Constructeur par copie
     public Client(Client autre) {
         this(autre.nom, autre.prenom, autre.nomUtilisateur, autre.nip);
     }
 
+    // Pour l'affichage d'un objet client
     @Override
     public String toString() {
         String chaine;
@@ -33,6 +37,7 @@ public class Client implements Serializable {
         return chaine;
     }
 
+    // Pour la comparaison de deux objets de type client
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

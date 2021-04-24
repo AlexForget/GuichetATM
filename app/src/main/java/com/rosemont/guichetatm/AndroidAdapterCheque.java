@@ -25,7 +25,7 @@ public class AndroidAdapterCheque extends ArrayAdapter<Cheque> {
     private int viewRes;
     private Resources res;
 
-
+    // Constructeur pour AndroidAdapter pour l'affichage de la liste des comptes chèques
     public AndroidAdapterCheque(@NonNull Context context, int resource, @NonNull List<Cheque> listeCheque) {
         super(context, resource, listeCheque);
 
@@ -35,6 +35,7 @@ public class AndroidAdapterCheque extends ArrayAdapter<Cheque> {
         this.res = context.getResources();
     }
 
+    // Permet de remplir les champs dans l'affichage de la liste
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
@@ -64,6 +65,7 @@ public class AndroidAdapterCheque extends ArrayAdapter<Cheque> {
         return listeCheque.size();
     }
 
+    // Permet de formatter les montant lors de l'affichage
     private String formatterDouble(int position) {
 
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.CANADA_FRENCH);

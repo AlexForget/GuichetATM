@@ -35,6 +35,7 @@ public class Guichet extends AppCompatActivity {
 
     GuichetATM guichet = new GuichetATM();
 
+    // Récupération du bundle à la création de l'activité et mise à jour de la classe guichetATM
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +90,23 @@ public class Guichet extends AppCompatActivity {
         Log.i(TAG, "onRestoreInstanceState");
     }
 
+    // Fait la même chose que le bouton déconnection. J'override la fonction onBackPressed
+    // pour pouvoir récupérer mon bundle si l'utilisateur appuie sur la touche retour
+    @Override
+    public void onBackPressed()
+    {
+        Bundle dataRetour = new Bundle();
+
+        dataRetour.putInt("nip", nip);
+        dataRetour.putDouble("sldCheque", soldeCheque);
+        dataRetour.putDouble("sldEpargne", soldeEpargne);
+
+        Intent retourConnection = new Intent(this, Authentification.class);
+        setResult(1, retourConnection);
+        retourConnection.putExtras(dataRetour);
+        finish();
+    }
+
     // Cré un bundle pour retourner les valeurs modifié à l'activité précédente
     public void onClickDeconnection(View view) {
         Bundle dataRetour = new Bundle();
@@ -97,12 +115,13 @@ public class Guichet extends AppCompatActivity {
         dataRetour.putDouble("sldCheque", soldeCheque);
         dataRetour.putDouble("sldEpargne", soldeEpargne);
 
-        Intent retourConnection = new Intent(this, MainActivity.class);
+        Intent retourConnection = new Intent(this, Authentification.class);
         setResult(1, retourConnection);
         retourConnection.putExtras(dataRetour);
         finish();
     }
 
+    // Affiche les soldes à jour des comptes du client connecté
     public void onClickEtatCompte(View view) {
         TextView soldeChqs = findViewById(R.id.txtSoldeCheque);
         TextView soldeEpa = findViewById(R.id.txtSoldeEpargne);
@@ -116,6 +135,7 @@ public class Guichet extends AppCompatActivity {
         soldeEpa.setText("Solde du compte épargne : " + soldeEpargneFormat);
     }
 
+    // Permet de formatter un montant lors de l'affichage
     private String formatterDouble(double solde) {
 
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.CANADA_FRENCH);
@@ -145,6 +165,9 @@ public class Guichet extends AppCompatActivity {
         return retour;
     }
 
+    // Selon le choix de l'utilisateur à l'aide des boutons radio et du montant entrer
+    // va éffectuer un dépôt, un retrait ou un transfert et vérifie la validation
+    // de l'opération
     public void onClickSoumettre(View view) {
         RadioButton rdbDepot = findViewById(R.id.rdbDepot);
         RadioButton rdbRetrait = findViewById(R.id.rdbRetrait);
@@ -247,6 +270,7 @@ public class Guichet extends AppCompatActivity {
         montantEntre.setText("0");
     }
 
+    // Valide le nombre à ajouter selon le bouton appuyer et l'ajout à la chaine de caractère
     public void ajouterCharacter(String c) {
         EditText montantEntre = findViewById(R.id.edtTxtMontantEntre);
 
@@ -261,6 +285,7 @@ public class Guichet extends AppCompatActivity {
         }
     }
 
+    // validation du montant
     public boolean validerMontant(String aValider) {
         final String SEQUENCE;
 

@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import Class.GuichetATM;
 
-public class MainActivity extends AppCompatActivity {
+public class Authentification extends AppCompatActivity {
 
     public final int REQUEST_FENETRE_PRINCIPALE = 1;
     GuichetATM guichet = new GuichetATM();
@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Récupération des valeur modifier dans l'activité guichet pour apporter les modifications
-    // et mettre à jour la classe guichet
+    // Récupération des valeur modifier dans l'activité guichet ou l'écran d'administrateur
+    // pour apporter les modifications et mettre à jour la classe guichet
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent dataRetour) {
         super.onActivityResult(requestCode, resultCode, dataRetour);

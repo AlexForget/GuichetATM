@@ -23,7 +23,7 @@ public class AndroidAdapterEpargne extends ArrayAdapter<Epargne> {
     private int viewRes;
     private Resources res;
 
-
+    // Constructeur pour AndroidAdapter pour l'affichage de la liste des comptes épargnes
     public AndroidAdapterEpargne(@NonNull Context context, int resource, @NonNull List<Epargne> listeEpargne) {
         super(context, resource, listeEpargne);
 
@@ -33,6 +33,7 @@ public class AndroidAdapterEpargne extends ArrayAdapter<Epargne> {
         this.res = context.getResources();
     }
 
+    // Permet de remplir les champs dans l'affichage de la liste
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
@@ -62,6 +63,7 @@ public class AndroidAdapterEpargne extends ArrayAdapter<Epargne> {
         return listeEpargne.size();
     }
 
+    // Permet de formatter les montant lors de l'affichage
     private String formatterDouble(int position) {
 
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.CANADA_FRENCH);

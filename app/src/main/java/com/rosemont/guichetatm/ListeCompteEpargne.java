@@ -19,6 +19,7 @@ public class ListeCompteEpargne extends AppCompatActivity {
     double[] soldesCheques;
     double[] soldesEpargne;
 
+    // Récupère les information nécessaire et affiche la liste des comptes épargnes
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

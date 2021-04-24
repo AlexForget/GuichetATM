@@ -7,18 +7,22 @@ public class Epargne extends Compte implements Serializable {
 
     final private double TAUX_INTERET = 0.0125;
 
+    // Constructeur à trois arguments
     public Epargne(int nip, String numero, double solde) {
         super(nip, numero, solde);
     }
 
+    // Constructeur sans argument
     public Epargne() {
         this(123, "xyz", 0);
     }
 
+    // Constructeur par copie
     public Epargne(Cheque autre) {
         this(autre.getNip(), autre.getNumero(), autre.getSolde());
     }
 
+    // Méthode pour payer l'intérêt des comptes épargnes
     public String payerInteret() {
         String chaine;
         double interet;
@@ -32,6 +36,7 @@ public class Epargne extends Compte implements Serializable {
         return chaine;
     }
 
+    // Affichage d'un object Epargne
     @Override
     public String toString() {
         String chaine;

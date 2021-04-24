@@ -16,6 +16,7 @@ public class ListeClient extends AppCompatActivity {
 
     GuichetATM guichet;
 
+    // Récupère les information nécessaire et affiche la liste des clients
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +26,6 @@ public class ListeClient extends AppCompatActivity {
 
         List<Client> listeClient;
         listeClient = guichet.getClient();
-
 
         AndroidAdapterClient adapter = new AndroidAdapterClient(this, R.layout.activity_liste_client, listeClient);
 

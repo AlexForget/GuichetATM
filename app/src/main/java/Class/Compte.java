@@ -12,20 +12,24 @@ public abstract class Compte implements Serializable {
     private double solde;
 
 
+    // Constructeur à trois arguments
     Compte(int nip, String numeroCompte, double soldeCompte) {
         this.nip = nip;
         this.numero = numeroCompte;
         this.solde = soldeCompte;
     }
 
+    // Constructeur sans arguments
     Compte() {
         this(123, "xxx", 0);
     }
 
+    // Constructeur par copie
     Compte(Compte autre) {
         this(autre.nip, autre.numero, autre.solde);
     }
 
+    // Méthode pour effectuer un retrait et ses validations
     public String retrait(double montant) {
         String chaine;
 
@@ -47,6 +51,7 @@ public abstract class Compte implements Serializable {
         return chaine;
     }
 
+    // Méthode pour effectuer un dépôt et ses validations
     public String depot(double montant) {
         String chaine;
 
@@ -56,6 +61,7 @@ public abstract class Compte implements Serializable {
         return chaine;
     }
 
+    // Méthode pour formatter l'affichage des montants d'Argent
     private String formatterDouble(double montant) {
 
         NumberFormat formatter = NumberFormat.getCurrencyInstance(Locale.CANADA_FRENCH);
@@ -63,7 +69,7 @@ public abstract class Compte implements Serializable {
         return formatter.format(montant);
     }
 
-
+    // Affichage d'une objet compte
     @Override
     public String toString() {
         String chaine;
@@ -75,6 +81,7 @@ public abstract class Compte implements Serializable {
         return chaine;
     }
 
+    // Pour comparer deux objets de type compte
     @Override
     public boolean equals(Object o) {
         if (this == o)
