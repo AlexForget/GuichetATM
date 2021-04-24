@@ -74,11 +74,20 @@ public class GuichetATM {
     public Bundle getBundlePourAdministrateur() {
         Bundle bundle = new Bundle();
         double[] soldesEpargne = new double[comptesEpargnes.size()];
+        String[] clientPrenom = new String[clients.size()];
+        String[] clientNom = new String[clients.size()];
 
         for (int i = 0; i < comptesEpargnes.size(); i++) {
             soldesEpargne[i] = comptesEpargnes.get(i).getSolde();
         }
+        for (int i = 0; i < clients.size(); i++) {
+            clientPrenom[i] = clients.get(i).getPrenom();
+            clientNom[i] = clients.get(i).getNom();
+        }
+
         bundle.putDoubleArray("soldeEpargnes", soldesEpargne);
+        bundle.putStringArray("clientPrenom", clientPrenom);
+        bundle.putStringArray("clientNom", clientNom);
 
         return bundle;
     }
@@ -233,7 +242,7 @@ public class GuichetATM {
         return comptesEpargnes;
     }
 
-    public void setClients(List<Client> clients) {
+    public void setClients(ArrayList<Client> clients) {
         this.clients = clients;
     }
 
