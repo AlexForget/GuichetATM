@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Class.GuichetATM;
-import Class.Cheque;
+import Class.Epargne;
 
 public class ListeCompteEpargne extends AppCompatActivity {
 
@@ -23,17 +23,17 @@ public class ListeCompteEpargne extends AppCompatActivity {
 
         guichet = new GuichetATM();
 
-        List<Cheque> listeCheque;
-        listeCheque = guichet.getComptesCheque();
+        List<Epargne> listeEpargne;
+        listeEpargne = guichet.getComptesEpargne();
 
 
-        AndroidAdapterCheque adapter = new AndroidAdapterCheque(this, R.layout.activity_liste_compte_cheque, listeCheque);
+        AndroidAdapterEpargne adapter = new AndroidAdapterEpargne(this, R.layout.activity_liste_compte_epargne, listeEpargne);
 
         final ListView list = findViewById(R.id.listeModele);
         final TextView quantite = findViewById(R.id.txtQuantite);
-        String nombreCheque = getString(R.string.nombre_cheque) + " " + adapter.getCount();
+        String nombreEpargne = getString(R.string.nombre_epargne) + " " + adapter.getCount();
 
-        quantite.setText(nombreCheque);
+        quantite.setText(nombreEpargne);
 
         list.setAdapter(adapter);
     }

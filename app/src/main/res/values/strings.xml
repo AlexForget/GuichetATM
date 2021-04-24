@@ -38,6 +38,8 @@
     <string name="nombre_epargne">Nombre de compte épargne :  </string>
     <string name="numero_compte_cheque">Numéro du compte :  </string>
     <string name="solde_compte_cheque">Solde du compte :  </string>
+    <string name="numero_compte_epargne">Numéro du compte :  </string>
+    <string name="solde_compte_epargne">Solde du compte :  </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
