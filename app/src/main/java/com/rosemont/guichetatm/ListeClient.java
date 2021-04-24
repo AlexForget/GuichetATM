@@ -13,23 +13,24 @@ import Class.GuichetATM;
 import Class.Client;
 
 public class ListeClient extends AppCompatActivity {
+
     GuichetATM guichet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_liste_client);
+        setContentView(R.layout.liste_layout);
 
         guichet = new GuichetATM();
 
-        List<Client> listeClient = new ArrayList<Client>();
+        List<Client> listeClient;
         listeClient = guichet.getClient();
 
 
-        AndroidAdapter adapter = new AndroidAdapter(this, R.layout.liste_layout_client, listeClient);
+        AndroidAdapterClient adapter = new AndroidAdapterClient(this, R.layout.activity_liste_client, listeClient);
 
-        final ListView list = findViewById(R.id.listeClient);
-        final TextView quantite = findViewById(R.id.txtListeClient);
+        final ListView list = findViewById(R.id.listeModele);
+        final TextView quantite = findViewById(R.id.txtQuantite);
         String nombreClient = getString(R.string.nombre_client) + " " + adapter.getCount();
 
         quantite.setText(nombreClient);

@@ -15,7 +15,7 @@ import java.util.List;
 
 import Class.Client;
 
-public class AndroidAdapter extends ArrayAdapter<Client> {
+public class AndroidAdapterClient extends ArrayAdapter<Client> {
 
     private List<Client> listeClients;
     private Context context;
@@ -23,7 +23,7 @@ public class AndroidAdapter extends ArrayAdapter<Client> {
     private Resources res;
 
 
-    public AndroidAdapter(@NonNull Context context, int resource, @NonNull List<Client> listeClients) {
+    public AndroidAdapterClient(@NonNull Context context, int resource, @NonNull List<Client> listeClients) {
         super(context, resource, listeClients);
 
         this.listeClients = listeClients;
