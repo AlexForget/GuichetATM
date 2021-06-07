@@ -1,5 +1,13 @@
 package com.rosemont.guichetatm;
 
+/*
+	Guichet ATM
+	auteur : Alexandre Forget
+	contact : alexandreqc26@gmail.com
+	07/06/2021
+	Simulateur de guichet ATM dans le cadre d'un cours d'initiation à la programmation Android (Java)
+ */
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
